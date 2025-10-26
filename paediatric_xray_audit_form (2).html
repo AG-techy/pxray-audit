@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paediatric X-ray Teaching Audit – Dr Alakananda Ghosh</title>
+  <meta name="description" content="Audit questionnaire for Paediatric X-ray teaching (Upper Limb, Lower Limb, Normal Variants, Safeguarding).">
+  <style>
+    :root { --accent:#0b74de; --muted:#f5f7fb; --text:#1a1a1a; --border:#e6e9ef; }
+    * { box-sizing: border-box; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin:0; color:var(--text); background:#fff; }
+    header { padding: 28px 20px; background: linear-gradient(180deg, var(--muted), #fff); border-bottom:1px solid var(--border); }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+    h1 { margin:0 0 8px; font-size: 28px; }
+    .sub { color:#5b6577; margin:0; }
+    section { margin: 28px 0; padding: 20px; border:1px solid var(--border); border-radius:14px; }
+    h2 { margin:0 0 12px; font-size: 20px; }
+    .grid { display:grid; gap:12px; }
+    label { font-weight: 600; }
+    .row { display:flex; flex-wrap: wrap; gap: 10px 18px; align-items:center; }
+    .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--border); border-radius:999px; cursor:pointer; background:#fff; }
+    .chip input { accent-color: var(--accent); }
+    .help { color:#6b7280; font-size:13px; margin-top:8px; }
+    textarea, input[type="text"] { width:100%; padding:12px 14px; border:1px solid var(--border); border-radius:10px; font-size:14px; }
+    .scale { border:1px dashed var(--border); border-radius:12px; padding:10px; }
+    .scale-row { display:flex; gap:10px; align-items:center; justify-content:space-between; padding:8px 6px; border-bottom:1px solid #f0f2f7; }
+    .scale-row:last-child { border-bottom:none; }
+    .scale-title { flex: 1 1 auto; font-size:14px; }
+    .scale-options { display:flex; gap:10px; }
+    .scale-options label { font-weight:500; color:#374151; }
+    .pill { font-size:12px; padding:3px 8px; background:var(--muted); border:1px solid var(--border); border-radius:999px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    button { appearance:none; border:none; background:var(--accent); color:#fff; padding:12px 16px; border-radius:12px; cursor:pointer; font-weight:700; }
+    button.secondary { background:#fff; color:#0f172a; border:1px solid var(--border); }
+    .footer { color:#6b7280; font-size:12px; text-align:center; padding:20px 0 40px; }
+    .success { display:none; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:10px 12px; border-radius:10px; margin-top:8px; }
+    table { width:100%; border-collapse:collapse; margin-top:14px; font-size:13px; }
+    th, td { border:1px solid var(--border); padding:8px; text-align:left; vertical-align:top; }
+    th { background:#fafbfe; }
+    .tag { background:#eaf3ff; color:#0b74de; border:1px solid #cfe2ff; padding:2px 6px; border-radius:999px; font-size:12px; }
+    .qrblock { display:flex; gap:14px; align-items:center; margin-top:8px; }
+    .qrcanvas { width:140px; height:140px; border:1px solid var(--border); border-radius:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Paediatric X-ray Teaching Audit</h1>
+      <p class="sub">Facilitator: <strong>Dr Alakananda Ghosh</strong> &middot; Series: Upper Limb &middot; Lower Limb &middot; Normal Variants &middot; Safeguarding</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Participant Details</h2>
+      <div class="grid">
+        <div>
+          <label>Role</label>
+          <div class="row">
+            <label class="chip"><input type="radio" name="role" value="ENP"> ENP</label>
+            <label class="chip"><input type="radio" name="role" value="Junior Doctor"> Junior Doctor</label>
+            <label class="chip"><input type="radio" name="role" value="Nurse"> Nurse</label>
+            <label class="chip"><input type="radio" name="role" value="Other"> Other</label>
+          </div>
+        </div>
+        <div>
+          <label>Session attended <span class="pill">select all that apply</span></label>
+          <div class="row">
+            <label class="chip"><input type="checkbox" name="session" value="Upper Limb"> Upper Limb</label>
+            <label class="chip"><input type="checkbox" name="session" value="Lower Limb"> Lower Limb</label>
+            <label class="chip"><input type="checkbox" name="session" value="Normal Variants"> Normal Variants</label>
+            <label class="chip"><input type="checkbox" name="session" value="Safeguarding"> Safeguarding</label>
+          </div>
+        </div>
+      </div>
+      <p class="help">All responses are anonymous and for teaching quality improvement.</p>
+    </section>
+
+    <section>
+      <h2>Pre-Session Self-Assessment <span class="pill">1=Not confident · 5=Very confident</span></h2>
+      <div id="pre" class="scale"></div>
+    </section>
+
+    <section>
+      <h2>Post-Session Self-Assessment <span class="pill">1=Not confident · 5=Very confident</span></h2>
+      <div id="post" class="scale"></div>
+    </section>
+
+    <section>
+      <h2>Session Feedback <span class="pill">1=Strongly disagree · 5=Strongly agree</span></h2>
+      <div id="fb" class="scale"></div>
+    </section>
+
+    <section>
+      <h2>Free-Text Feedback</h2>
+      <div class="grid">
+        <div>
+          <label>What part of the teaching helped you most?</label>
+          <textarea name="best" rows="3" placeholder="Your answer"></textarea>
+        </div>
+        <div>
+          <label>What could be improved for future sessions?</label>
+          <textarea name="improve" rows="3" placeholder="Your answer"></textarea>
+        </div>
+        <div>
+          <label>Any additional feedback or suggestions</label>
+          <textarea name="other" rows="3" placeholder="Your answer"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Submit</h2>
+      <div class="actions">
+        <button id="submitBtn">Submit response</button>
+        <button class="secondary" id="exportBtn">Export CSV</button>
+        <button class="secondary" id="resetBtn">Reset form</button>
+      </div>
+      <div id="notice" class="success">Thanks — your response has been saved locally. You can export all responses as a CSV any time.</div>
+      <p class="help">Note: This standalone form stores responses in your browser (local only). Host this file (e.g., GitHub Pages) so each user’s device stores their own response. To centralise data collection, replace the <span class="tag">handleSubmit()</span> function with your endpoint (e.g., Google Apps Script or FormSpree).</p>
+    </section>
+
+    <section>
+      <h2>Response Log (local preview)</h2>
+      <table id="log">
+        <thead>
+          <tr>
+            <th>Timestamp</th>
+            <th>Role</th>
+            <th>Session(s)</th>
+            <th>Pre scores (1–5)</th>
+            <th>Post scores (1–5)</th>
+            <th>Δ Mean</th>
+            <th>Feedback Likert</th>
+            <th>Best</th>
+            <th>Improve</th>
+            <th>Other</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>QR Code</h2>
+      <div class="qrblock">
+        <canvas id="qr" class="qrcanvas" aria-label="QR code"></canvas>
+        <div>
+          <div>Scan to open: <code id="qrLink">https://ag-techy.github.io/pxray-audit/paediatric_xray_audit_form.html</code></div>
+          <p class="help">This QR points to the live hosted page.</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="year"></span> Dr Alakananda Ghosh · Paediatric X-ray Teaching Audit</p>
+  </main>
+
+  <script>
+    // Configuration
+    const SURVEY_URL = "https://ag-techy.github.io/pxray-audit/paediatric_xray_audit_form.html";
+    const preItems = [
+      "Identifying normal paediatric X-ray anatomy",
+      "Recognising common fractures and injury patterns",
+      "Distinguishing normal variants from pathology",
+      "Correlating X-ray findings with safeguarding concerns",
+      "Interpreting images independently in the ED setting"
+    ];
+    const postItems = [...preItems];
+    const fbItems = [
+      "The session was clear and easy to follow",
+      "The PowerPoint visuals were useful for learning",
+      "The content was appropriate for my role",
+      "The session improved my safeguarding awareness",
+      "The teaching was interactive and engaging",
+      "I can apply what I learned to clinical practice",
+      "I would recommend this session to colleagues"
+    ];
+
+    const qs = (sel, root=document) => root.querySelector(sel);
+
+    function buildScale(root, groupName, items, min=1, max=5) {
+      items.forEach((text, idx) => {
+        const row = document.createElement('div');
+        row.className = 'scale-row';
+        const title = document.createElement('div');
+        title.className = 'scale-title';
+        title.textContent = text;
+        const opts = document.createElement('div');
+        opts.className = 'scale-options';
+        for (let v=min; v<=max; v++) {
+          const id = `${groupName}_${idx}_${v}`;
+          const lab = document.createElement('label');
+          lab.innerHTML = `<input type="radio" name="${groupName}_${idx}" value="${v}" required> ${v}`;
+          opts.appendChild(lab);
+        }
+        row.appendChild(title);
+        row.appendChild(opts);
+        root.appendChild(row);
+      });
+    }
+
+    function getScaleValues(prefix, count) {
+      const vals = [];
+      for (let i=0; i<count; i++) {
+        const sel = document.querySelector(`input[name="${prefix}_${i}"]:checked`);
+        vals.push(sel ? Number(sel.value) : null);
+      }
+      return vals;
+    }
+
+    function mean(arr) {
+      const a = arr.filter(v => typeof v === 'number');
+      if (!a.length) return null;
+      return +(a.reduce((s,v)=>s+v,0)/a.length).toFixed(2);
+    }
+
+    function loadLog() {
+      try { return JSON.parse(localStorage.getItem('pxray_audit_log')||'[]'); }
+      catch { return []; }
+    }
+    function saveLog(data) { localStorage.setItem('pxray_audit_log', JSON.stringify(data)); }
+
+    function renderLog() {
+      const tb = qs('#log tbody');
+      tb.innerHTML='';
+      const data = loadLog();
+      data.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${r.ts}</td>
+          <td>${r.role||""}</td>
+          <td>${(Array.isArray(r.session)?r.session.join(', '):r.session)||""}</td>
+          <td>${r.pre.join(' / ')}</td>
+          <td>${r.post.join(' / ')}</td>
+          <td>${r.delta_mean??""}</td>
+          <td>${r.fb.join(' / ')}</td>
+          <td>${(r.best||'').replace(/</g,'&lt;')}</td>
+          <td>${(r.improve||'').replace(/</g,'&lt;')}</td>
+          <td>${(r.other||'').replace(/</g,'&lt;')}</td>
+        `;
+        tb.appendChild(tr);
+      });
+    }
+
+    function exportCSV() {
+      const rows = loadLog();
+      const hdr = [
+        "timestamp","role","sessions",
+        ...preItems.map((t,i)=>`pre_${i+1}`),
+        ...postItems.map((t,i)=>`post_${i+1}`),
+        "delta_mean",
+        ...fbItems.map((t,i)=>`feedback_${i+1}`),
+        "best","improve","other"
+      ];
+      const csv = [hdr.join(',')].concat(
+        rows.map(r => {
+          const fields = [
+            r.ts,r.role||"", Array.isArray(r.session)?r.session.join('; '): (r.session||""),
+            ...r.pre, ...r.post, r.delta_mean ?? "",
+            ...r.fb, JSON.stringify(r.best||""), JSON.stringify(r.improve||""), JSON.stringify(r.other||"")
+          ];
+          return fields.map(v => (v===null||v===undefined) ? "" : `${v}`).join(',');
+        })
+      ).join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'paediatric_xray_audit_responses.csv';
+      a.click();
+    }
+
+    function resetForm() {
+      document.querySelectorAll('input[type="radio"]').forEach(i=>i.checked=false);
+      document.querySelectorAll('input[type="checkbox"]').forEach(i=>i.checked=false);
+      document.querySelectorAll('textarea').forEach(t=>t.value='');
+    }
+
+    function handleSubmit() {
+      const role = (document.querySelector('input[name="role"]:checked')||{}).value || "";
+      const sessionChecks = Array.from(document.querySelectorAll('input[name="session"]:checked')).map(i=>i.value);
+      const pre = getScaleValues('pre', preItems.length);
+      const post = getScaleValues('post', postItems.length);
+      const fb = getScaleValues('fb', fbItems.length);
+      const best = document.querySelector('textarea[name="best"]').value.trim();
+      const improve = document.querySelector('textarea[name="improve"]').value.trim();
+      const other = document.querySelector('textarea[name="other"]').value.trim();
+
+      if (!role) { alert('Please select your Role.'); return; }
+      if (!sessionChecks.length) { alert('Please select at least one Session attended.'); return; }
+      if (pre.includes(null) || post.includes(null) || fb.includes(null)) {
+        alert('Please complete all scale questions (pre, post, feedback).');
+        return;
+      }
+
+      const delta = mean(post) !== null && mean(pre) !== null ? +(mean(post) - mean(pre)).toFixed(2) : "";
+      const row = {
+        ts: new Date().toISOString(),
+        role,
+        session: sessionChecks,
+        pre, post, delta_mean: delta, fb, best, improve, other
+      };
+      const log = loadLog();
+      log.push(row);
+      saveLog(log);
+      renderLog();
+      document.getElementById('notice').style.display = 'block';
+      resetForm();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function drawSimpleQR(canvas, text) {
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#fff'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      // fallback text-in-box if CDN QR lib blocked; still scannable via on-page QR lib if loaded
+      ctx.fillStyle = '#000'; ctx.font = '12px sans-serif';
+      const lines = text.match(/.{1,16}/g) || [text];
+      lines.forEach((ln,i)=>ctx.fillText(ln, 6, 20 + i*14));
+      ctx.strokeStyle = '#c9d1e6'; ctx.strokeRect(0.5,0.5,canvas.width-1,canvas.height-1);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Build scales
+      buildScale(qs('#pre'), 'pre', preItems);
+      buildScale(qs('#post'), 'post', postItems);
+      buildScale(qs('#fb'), 'fb', fbItems);
+
+      // Wire buttons
+      document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+      document.getElementById('exportBtn').addEventListener('click', exportCSV);
+      document.getElementById('resetBtn').addEventListener('click', resetForm);
+
+      // Render existing log
+      renderLog();
+
+      // QR
+      document.getElementById('qrLink').textContent = SURVEY_URL;
+      const canvas = document.getElementById('qr');
+      drawSimpleQR(canvas, SURVEY_URL);
+
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+  <!-- Optional: real QR rendering if CDN accessible -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.QRious) {
+        new QRious({ element: document.getElementById('qr'), value: "https://ag-techy.github.io/pxray-audit/paediatric_xray_audit_form.html", size: 140 });
+      }
+    });
+  </script>
+</body>
+</html>
